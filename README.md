@@ -1,4 +1,4 @@
-# projet_marvel_frontend
+# Projet Marvel Frontend
 
 ## Project setup
 ```
