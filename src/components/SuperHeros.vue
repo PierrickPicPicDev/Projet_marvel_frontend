@@ -5,7 +5,7 @@
         <table>
             <tr>
                 <td>
-                    <v-btn color="primary" dark v-on:click="getSuperHeros()"> Afficher</v-btn>
+                    <v-btn color="primary" dark v-on:click="getSuperHerosFromApiMarvel()"> Afficher</v-btn>
                 </td>
                 <td>
                     <v-btn color="secondary" dark v-on:click="getTest()"> Maj</v-btn>
@@ -44,15 +44,9 @@
 
 <script>
     import axios from "axios";
-
-    /*
-    const API_PUBLIC_KEY = '650a93f0364e609d8eb2f7aaaebe5400';
-    process.env.VUE_APP_MARVEL_API_KEY;
-    console.log(API_PUBLIC_KEY);
-    const hash = '42c8ff7c372c43e5d33448e06c5668eb';
-    console.log(hash);
-    import {public_key, secret_key} from "../marvel";
-    */
+    
+    export const public_Key = process.env.VUE_APP_MARVEL_API_PUBLIC_KEY;
+    export const hash= process.env.VUE_APP_MARVEL_API_HASH_KEY;
 
     export default {
         name: "SuperHeros",
@@ -76,14 +70,13 @@
             goToDetails(hero) {
                 console.log(hero);
                 this.$router.push({name: 'SuperTeam'})
-            }
-            /*
-            getSuperHeros: function() {
-                axios.get('http://gateway.marvel.com/v1/public/characters?ts=1?apikey=650a93f0364e609d8eb2f7aaaebe5400&hash=42c8ff7c372c43e5d33448e06c5668eb')
+            },
+
+            getSuperHerosFromApiMarvel: function () {
+                axios.get(`http://gateway.marvel.com/v1/public/characters?ts=1&apikey=${public_Key}&hash=${hash}`)
                     .then(rep => this.superHeros = rep.data)
                     .catch(() => this.superHeros = [{name: "Loading error"}]);
-            }*/
-
+            }
         }
     }
 </script>
