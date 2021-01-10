@@ -28,14 +28,14 @@
                     <v-list-item-content>
                         <v-list-item-title v-html="hero.name"></v-list-item-title>
                     </v-list-item-content>
+                    <v-list-item-avatar>
+                        <v-img v-bind:src="hero.thumbnail.path"></v-img>
+                    </v-list-item-avatar>
 
                     <v-list-item-content>
-                        <v-list-item-title v-html="hero.thumbnail"></v-list-item-title>
+                        <v-list-item-title>{{hero.description}}</v-list-item-title>
                     </v-list-item-content>
 
-                    <v-list-item-content>
-                        <v-list-item-title v-html="hero.description"></v-list-item-title>
-                    </v-list-item-content>
                 </v-list-item>
             </v-list-item-group>
         </v-list>
@@ -44,9 +44,9 @@
 
 <script>
     import axios from "axios";
-    
+
     export const public_Key = process.env.VUE_APP_MARVEL_API_PUBLIC_KEY;
-    export const hash= process.env.VUE_APP_MARVEL_API_HASH_KEY;
+    export const hash = process.env.VUE_APP_MARVEL_API_HASH_KEY;
 
     export default {
         name: "SuperHeros",
@@ -74,7 +74,9 @@
 
             getSuperHerosFromApiMarvel: function () {
                 axios.get(`http://gateway.marvel.com/v1/public/characters?ts=1&apikey=${public_Key}&hash=${hash}`)
-                    .then(rep => this.superHeros = rep.data)
+
+                    .then(rep => this.superHeros = rep.data.data.results)
+
                     .catch(() => this.superHeros = [{name: "Loading error"}]);
             }
         }
