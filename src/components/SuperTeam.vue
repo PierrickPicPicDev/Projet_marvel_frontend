@@ -1,64 +1,67 @@
 <template>
     <div>
-        <h1>Création d'un Super Héros</h1>
-        <br>
+        <h1>Super Team</h1>
         <table>
             <tr>
-                <v-text-field
-                        label=""
-                        placeholder="Name"
-                        outlined
-                ></v-text-field>
+                <td>
+                    <v-btn color="primary" dark @click="goToDisplayOne()"> Ajouter Héros</v-btn>
+                </td>
             </tr>
-            <tr>
-                <v-text-field
-                        label=""
-                        placeholder="Thumbnail"
-                        outlined
-                ></v-text-field>
-            </tr>
-            <tr>
-                <v-text-field
-                        label=""
-                        placeholder="Description"
-                        outlined
-                ></v-text-field>
-            </tr>
-            <td>
-                <v-btn color="primary" dark v-on:click="createHeros()"> Submit</v-btn>
-            </td>
         </table>
+        <br>
+        <v-list>
+            <v-list-item-group>
+                <v-list-item v-for="hero in teams"
+                             :key="hero.id"
+                >
+                    <v-list-item-content>
+                        <v-list-item-title v-html="hero.name"></v-list-item-title>
+                    </v-list-item-content>
+                    <v-list-item-content>
+                        <v-img max-height="150"
+                               max-width="150"
+                               v-if="hero.thumbnail"
+                               :src="hero.thumbnail"></v-img>
+                    </v-list-item-content>
+
+                    <v-list-item-content>
+                        <v-list-item-title>{{hero.description}}</v-list-item-title>
+                    </v-list-item-content>
+                    <v-list-item-content>
+                        <v-btn color="primary" v-if="hero" dark @click="removeHero(hero)"> Suprimer</v-btn>
+                    </v-list-item-content>
+                </v-list-item>
+            </v-list-item-group>
+        </v-list>
     </div>
 </template>
 
 <script>
-    import axios from "axios";
+    import {mapGetters} from "vuex";
 
     export default {
         name: "SuperTeam",
         data: () => {
             return {
-                name: "",
-                thumbnail: "",
-                description: "",
-                superteam: {
-                    name: "",
-                    heros: {}
-                }
             }
         },
+        mounted() {
+            if (this.teams.length === 0) {
+                this.$store.dispatch('getSuperHeros')
+            }
+        },
+        computed: {
+            ...mapGetters({
+                teams: 'team'
+            })
+        },
         methods: {
-            createHeros() {
-                if (this.name !== "") {
-                    axios.post('/heros', {
-                        name: this.name,
-                        thumbnail: this.thumbnail,
-                        description: this.description,
-                        superteam: this.superteam
-
-                    }).then(rep => console.log(rep));
-                }
+            goToDisplayOne() {
+                this.$router.push({name: 'SuperHeros'})
             },
+            removeHero(hero) {
+                this.$store.dispatch('removeHero',hero)
+            }
         }
     }
 </script>
