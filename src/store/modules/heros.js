@@ -1,7 +1,4 @@
-import Vue from 'vue'
 import axios from "axios";
-
-Vue.use(axios);
 
 export const public_Key = process.env.VUE_APP_MARVEL_API_PUBLIC_KEY;
 export const hash = process.env.VUE_APP_MARVEL_API_HASH_KEY;
@@ -11,8 +8,7 @@ const state = {
 }
 
 const mutations = {
-
-    SET_SUPER_HEROS(state, superHeros) {
+       SET_SUPER_HEROS(state, superHeros) {
         state.superHeros = superHeros
     }
 }
