@@ -1,10 +1,9 @@
 <template>
     <div>
-        <h1>Super Team</h1>
         <table>
             <tr>
                 <td>
-                    <v-btn color="primary" dark @click="goToDisplayOne()"> Ajouter Héros</v-btn>
+                    <v-btn color="primary" dark @click="goToDisplayOne()"> Ajouter un Héros</v-btn>
                 </td>
             </tr>
         </table>

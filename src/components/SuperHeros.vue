@@ -1,10 +1,9 @@
 <template>
     <div>
-        <h1>Super Héros</h1>
         <table>
             <tr>
                 <td>
-                    <v-btn color="primary" dark @click="goToSuperTeam()"> SuperTeam</v-btn>
+                    <v-btn color="primary" dark @click="goToSuperTeam()">Ma Super Team</v-btn>
                 </td>
             </tr>
         </table>
