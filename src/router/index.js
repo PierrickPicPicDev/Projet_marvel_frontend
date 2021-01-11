@@ -15,7 +15,7 @@ const router = new Router({
         },
         {
             name: 'SuperTeam',
-            path: "../SuperTeam",
+            path: "/../SuperTeam",
             component: SuperTeam
         },
         {
