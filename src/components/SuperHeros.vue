@@ -1,14 +1,5 @@
 <template>
     <div>
-        <h1>Super Héros</h1>
-        <table>
-            <tr>
-                <td>
-                    <v-btn color="primary" dark @click="goToSuperTeam()"> SuperTeam</v-btn>
-                </td>
-            </tr>
-        </table>
-
         <v-list>
             <v-list-item-group>
                 <v-list-item v-for="hero in superHeros"
@@ -40,8 +31,7 @@
     export default {
         name: "SuperHeros",
         data: () => {
-            return {
-            }
+            return {}
         },
         mounted() {
             this.$store.dispatch('getSuperHerosFromApiMarvel')
@@ -53,10 +43,7 @@
         },
         methods: {
             addHeroToSuperTeam(superHeros) {
-                this.$store.dispatch('addHeroToSuperTeam',superHeros)
-            },
-            goToSuperTeam() {
-                this.$router.push({name: 'SuperTeam'})
+                this.$store.dispatch('addHeroToSuperTeam', superHeros)
             },
         }
     }

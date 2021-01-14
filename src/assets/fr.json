@@ -1,0 +1,9 @@
+{
+  "header": {
+    "heroes": "Les Super Héros",
+    "team": "Ma Super Team",
+    "back": "Retour",
+    "addHero": "Ajouter un Héros",
+    "delete": "Supprimer"
+  }
+}
