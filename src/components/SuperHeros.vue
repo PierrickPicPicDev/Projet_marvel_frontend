@@ -1,13 +1,5 @@
 <template>
     <div>
-        <table>
-            <tr>
-                <td>
-                    <v-btn color="primary" dark @click="goToSuperTeam()">Ma Super Team</v-btn>
-                </td>
-            </tr>
-        </table>
-
         <v-list>
             <v-list-item-group>
                 <v-list-item v-for="hero in superHeros"
@@ -53,9 +45,6 @@
         methods: {
             addHeroToSuperTeam(superHeros) {
                 this.$store.dispatch('addHeroToSuperTeam',superHeros)
-            },
-            goToSuperTeam() {
-                this.$router.push({name: 'SuperTeam'})
             },
         }
     }

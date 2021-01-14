@@ -3,7 +3,7 @@
         <table>
             <tr>
                 <td>
-                    <v-btn color="primary" dark @click="goToDisplayOne()"> Ajouter un Héros</v-btn>
+                    <v-btn color="primary" dark @click="goToDisplayOne()">{{ $t('header.addHero') }}</v-btn>
                 </td>
             </tr>
         </table>
@@ -13,6 +13,7 @@
                 <v-list-item v-for="hero in teams"
                              :key="hero.id"
                 >
+
                     <v-list-item-content>
                         <v-list-item-title v-html="hero.name"></v-list-item-title>
                     </v-list-item-content>
@@ -27,7 +28,7 @@
                         <v-list-item-title>{{hero.description}}</v-list-item-title>
                     </v-list-item-content>
                     <v-list-item-content>
-                        <v-btn color="primary" v-if="hero" dark @click="removeHero(hero)"> Suprimer</v-btn>
+                        <v-btn color="primary" v-if="hero" dark @click="removeHero(hero)"> {{ $t('header.delete') }}</v-btn>
                     </v-list-item-content>
                 </v-list-item>
             </v-list-item-group>

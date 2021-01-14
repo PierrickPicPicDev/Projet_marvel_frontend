@@ -11,12 +11,19 @@
     "@braid/vue-formulate": "^2.4.5",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "flag-icon-css": "^3.5.0",
     "vue": "^2.6.11",
     "vue-axios": "^3.2.2",
+    "vue-flag-icon": "^1.0.6",
+    "vue-i18n": "^8.22.3",
+    "vue-loader": "latest",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.4.9",
     "vuetify": "^2.2.11",
-    "vuex": "^3.6.0"
+    "vuex": "^3.6.0",
+    "webpack": "^4.19.1",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-ruleset": "^0.1.8"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
