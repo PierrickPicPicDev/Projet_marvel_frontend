@@ -1,4 +1,5 @@
 <template>
+    <scroll-fixed-header :fixed.sync="fixed" >
     <div>
         <v-app-bar height="100" bottom dark color="black">
             <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
@@ -31,6 +32,7 @@
             </v-list>
         </v-navigation-drawer>
     </div>
+    </scroll-fixed-header>
 </template>
 
 <script>
@@ -43,7 +45,8 @@
         },
         data: () => {
             return {
-                drawer: false
+                drawer: false,
+                fixed: false,
             }
         },
         methods: {

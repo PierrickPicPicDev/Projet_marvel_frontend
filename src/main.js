@@ -5,8 +5,10 @@ import router from './router'
 import vuetify from './plugins/vuetify'
 import axios from 'axios'
 import index from './store'
+import ScrollFixedHeader from 'vuejs-scroll-fixed-header';
 
 axios.defaults.baseURL = 'http://localhost:9090';
+Vue.use(ScrollFixedHeader);
 
 Vue.config.productionTip = false
 

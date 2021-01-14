@@ -31,8 +31,7 @@
     export default {
         name: "SuperHeros",
         data: () => {
-            return {
-            }
+            return {}
         },
         mounted() {
             this.$store.dispatch('getSuperHerosFromApiMarvel')
@@ -44,7 +43,7 @@
         },
         methods: {
             addHeroToSuperTeam(superHeros) {
-                this.$store.dispatch('addHeroToSuperTeam',superHeros)
+                this.$store.dispatch('addHeroToSuperTeam', superHeros)
             },
         }
     }
