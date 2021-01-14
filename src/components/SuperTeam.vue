@@ -1,19 +1,10 @@
 <template>
     <div>
-        <table>
-            <tr>
-                <td>
-                    <v-btn color="primary" dark @click="goToDisplayOne()">{{ $t('header.addHero') }}</v-btn>
-                </td>
-            </tr>
-        </table>
-        <br>
         <v-list>
             <v-list-item-group>
                 <v-list-item v-for="hero in teams"
                              :key="hero.id"
                 >
-
                     <v-list-item-content>
                         <v-list-item-title v-html="hero.name"></v-list-item-title>
                     </v-list-item-content>
@@ -56,9 +47,6 @@
             })
         },
         methods: {
-            goToDisplayOne() {
-                this.$router.push({name: 'SuperHeros'})
-            },
             removeHero(hero) {
                 this.$store.dispatch('removeHero',hero)
             }
