@@ -25,9 +25,11 @@ const actions = {
     addHeroToSuperTeam({commit}, superHeros) {
         let hero = {
             name: superHeros.name,
-            thumbnail: superHeros.thumbnail.path+'.'+superHeros.thumbnail.extension,
-            description: superHeros.description
+            thumbnail: superHeros.thumbnail.path + '.' + superHeros.thumbnail.extension,
+            description: superHeros.description,
+            comics: superHeros.comics.items
         }
+
         console.log(hero)
         if (state.team.filter(h => h.name === superHeros.name).length === 0) {
             axios.post('/heros',hero)
@@ -40,6 +42,7 @@ const actions = {
             .then(rep => {
                 let team = rep.data
                 commit('GET_SUPER_HEROS', team)
+                console.log(team)
             })
             .catch(() => this.team = [{name: "Loading error"}]);
     },
@@ -47,8 +50,7 @@ const actions = {
         axios.delete(`/heros/${superHeros.name}`)
             .then(result => console.log(result.data))
         commit('REMOVE_SUPER_HEROS', superHeros)
-    },
-
+    }
 }
 
 export default {

@@ -1,7 +1,7 @@
 {
   "usage-example": "{{ $t('header.entities') }}",
   "header": {
-    "heroes": "The Super Heroes",
+    "heroes": "Super Heroes",
     "team": "My Super Team",
     "addHero": "Add a Hero",
     "delete": "Delete"

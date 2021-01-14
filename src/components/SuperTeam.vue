@@ -5,7 +5,6 @@
                 <v-list-item v-for="hero in teams"
                              :key="hero.id"
                 >
-
                     <v-list-item-content>
                         <v-list-item-title v-html="hero.name"></v-list-item-title>
                     </v-list-item-content>
@@ -48,7 +47,6 @@
             })
         },
         methods: {
-
             removeHero(hero) {
                 this.$store.dispatch('removeHero',hero)
             }
