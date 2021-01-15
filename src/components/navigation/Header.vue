@@ -19,7 +19,7 @@
                     <FlagInternation/>
                 </v-toolbar-items>
                 <template v-slot:extension>
-                    <v-tabs v-if="!isHeros" align-with-title>
+                    <v-tabs  v-if="!isHeros" color="#87CEFA" align-with-title>
                         <v-tabs-slider color="#F0E68C"></v-tabs-slider>
                         <v-tab @click="goToSuperTeam()">Ma super Teams</v-tab>
                         <v-tab @click="goToComics()" >Comics</v-tab>
