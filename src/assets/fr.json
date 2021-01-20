@@ -3,6 +3,7 @@
     "heroes": "Super Héros",
     "team": "Ma Super Team",
     "addHero": "Ajouter un Héros",
-    "delete": "Supprimer"
+    "delete": "Supprimer",
+    "searchByName": "Recherche par nom"
   }
 }
