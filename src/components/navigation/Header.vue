@@ -7,7 +7,7 @@
                 <v-spacer></v-spacer>
                 <Table>
                     <tr>
-                        <td v-if="isHeros">
+                        <td v-if="displayBtn===0">
                             <v-btn color="red" @click="goToSuperTeam()">{{ $t('header.team') }}</v-btn>
                         </td>
                         <td v-else>
@@ -18,14 +18,27 @@
                 <v-toolbar-items>
                     <FlagInternation/>
                 </v-toolbar-items>
+
                 <template v-slot:extension>
-                    <v-tabs v-if="!isHeros" align-with-title>
+                    <v-row v-if="displayBtn===0" class="px-3 mx-auto">
+                        <v-col cols="8" lg="2">
+                            <v-text-field v-model="searchName" :label="$t('header.searchByName')"></v-text-field>
+                        </v-col>
+                        <v-col cols="4" lg="2">
+                            <v-btn small @click="searchByName()">
+                                <v-icon  color="white">mdi-magnify</v-icon>
+                            </v-btn>
+                        </v-col>
+                    </v-row>
+
+                    <v-tabs  v-if="displayBtn===1" color="#87CEFA" align-with-title>
                         <v-tabs-slider color="#F0E68C"></v-tabs-slider>
                         <v-tab @click="goToSuperTeam()">Ma super Teams</v-tab>
                         <v-tab @click="goToComics()" >Comics</v-tab>
                     </v-tabs>
                 </template>
             </v-app-bar>
+
             <v-navigation-drawer app v-model="drawer" color="red" temporary>
                 <v-subheader class="drawer-title">Actions</v-subheader>
                 <v-list-item-group v-model="selectedItem" color="white">
@@ -48,6 +61,7 @@
 
 <script>
     import FlagInternation from "../others/FlagInternation";
+    import {mapGetters} from "vuex";
 
     export default {
         name: "Header",
@@ -59,28 +73,33 @@
                 drawer: false,
                 fixed: false,
                 selectedItem: 0,
-                isHeros: true,
-                isTeam: true,
                 items: [
                     {text: 'Action 1', icon: 'mdi-view-dashboard'},
                     {text: 'Action 2', icon: 'mdi-account'},
                     {text: 'Action 3', icon: 'mdi-flag'},
-                ]
+                ],
+                searchName: ""
             }
+        },
+        computed: {
+            ...mapGetters([
+                'displayBtn'
+            ])
         },
         methods: {
             goToSuperTeam() {
                 this.$router.push({name: 'SuperTeam'})
-                //this.$router.push({name: 'TeamComics'})
-                this.isHeros = false;
+                this.$store.commit('SET_DISPLAY_BTN',1)
             },
             goToDisplayHome() {
                 this.$router.push({name: 'SuperHeros'})
-                this.isHeros = true;
-                this.isTeam = true;
+                this.$store.commit('SET_DISPLAY_BTN',0)
             },
             goToComics() {
                 this.$router.push({name: 'TeamComics'})
+            },
+            searchByName() {
+
             }
         }
     }

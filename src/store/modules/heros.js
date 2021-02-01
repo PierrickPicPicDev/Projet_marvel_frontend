@@ -19,7 +19,7 @@ const getters = {
 const actions = {
 
     getSuperHerosFromApiMarvel({commit}) {
-        axios.get(`http://gateway.marvel.com/v1/public/characters?ts=1&apikey=${public_Key}&hash=${hash}`)
+        axios.get(`http://gateway.marvel.com/v1/public/characters?ts=1&limit=100&offset=0&apikey=${public_Key}&hash=${hash}`)
             .then(rep => {
                 console.log(rep.data.data.results)
                 let superHeros = rep.data.data.results
