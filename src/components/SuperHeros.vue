@@ -1,12 +1,16 @@
 <template>
     <div class="div-style">
+
+
         <v-container class="center-list">
             <v-pagination
                     v-model="page"
                     class="my-4"
                     :length="superHeros.length/20"
                     :total-visible="15"
+                    @input="next"
             ></v-pagination>
+
             <v-list dark>
                 <v-list-item-group>
                     <v-list-item v-for="hero in superHeros"
@@ -40,6 +44,11 @@
         components: {},
         data: () => {
             return {
+                headers: [
+                    {text: 'Name', align: 'left', value: 'name'},
+                    {text: 'Vignette', value: 'vignette'},
+                    {text: 'Description', value: 'description'}
+                ],
                 page: 1,
             }
         },
@@ -50,12 +59,14 @@
             ...mapGetters([
                 'superHeros'
             ]),
-
         },
         methods: {
             addHeroToSuperTeam(superHeros) {
                 this.$store.dispatch('addHeroToSuperTeam', superHeros)
             },
+            next(page) {
+                console.log(page)
+            }
         }
     }
 </script>

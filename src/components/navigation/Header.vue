@@ -100,16 +100,7 @@
             },
             searchByName() {
 
-            },
-            getRequestParams(searchName, page, pageSize) {
-                let params = {};
-                if (searchName && page && pageSize) {
-                    params["name"] = searchName;
-                    params["page"] = page - 1;
-                    params["size"] = pageSize;
-                }
-                return params;
-            },
+            }
         }
     }
 </script>
